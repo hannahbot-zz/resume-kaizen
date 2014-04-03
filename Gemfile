@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Faker data
+gem 'faker'
+
 # Pundit Authorization
 gem 'pundit'
 
