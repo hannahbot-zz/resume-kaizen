@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Pundit Authorization
+gem 'pundit'
+
+# Carrierwave
+gem 'carrierwave'
+
 # Devise
 gem 'devise'
 
