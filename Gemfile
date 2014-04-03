@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Crocodoc
+gem 'crocodoc-ruby'
+
+# Rest-client
+gem 'rest-client'
+
 # Figaro
 gem 'figaro'
 
@@ -31,7 +37,7 @@ gem 'rails', '4.0.3'
 gem 'pg'
 
 # Use Twitter bootstrap
-gem 'bootstrap-sass', '~>2.3.1.0'
+gem 'bootstrap-sass', '~> 2.3.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

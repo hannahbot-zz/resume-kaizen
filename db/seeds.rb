@@ -5,6 +5,7 @@ u = User.new(
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password')
+u.skip_confirmation!
 u.save
 u.update_attribute(:role, 'admin')
 
@@ -13,6 +14,7 @@ u = User.new(
   email: 'reviwer@example.com',
   password: 'password',
   password_confirmation: 'password')
+u.skip_confirmation!
 u.save
 u.update_attribute(:role, 'reviewer')
 
@@ -21,6 +23,7 @@ u = User.new(
   email: 'submitter@example.com',
   password: 'password',
   password_confirmation: 'password')
+u.skip_confirmation!
 u.save
 u.update_attribute(:role, 'submitter')
 
