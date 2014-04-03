@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Figaro
+gem 'figaro'
+
+# Fog
+gem 'fog'
+
 # Faker data
 gem 'faker'
 
@@ -12,19 +18,20 @@ gem 'carrierwave'
 # Devise
 gem 'devise'
 
-# Postgres
-gem 'pg'
-
 # RSpec
 group :development, :test do
 	gem 'rspec-rails'
+  gem 'pry'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use pg as the database for Active Record
+gem 'pg'
+
+# Use Twitter bootstrap
+gem 'bootstrap-sass', '~>2.3.1.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
