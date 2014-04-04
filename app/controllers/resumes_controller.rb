@@ -9,7 +9,7 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @resume = Resume.new.(resume_params)
+    @resume = Resume.new(resume_params)
     if @resume.save
       flash[:notice] = "Resume submitted."
       redirect_to root_path
