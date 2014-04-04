@@ -28,6 +28,7 @@ gem 'devise'
 group :development, :test do
 	gem 'rspec-rails'
   gem 'pry'
+	gem 'rails-erd'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
