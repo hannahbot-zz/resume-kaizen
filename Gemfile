@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# AWS
+gem 'aws-sdk'
+
 # Crocodoc
 gem 'crocodoc-ruby'
 

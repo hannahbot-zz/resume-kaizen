@@ -7,7 +7,7 @@ CarrierWave.configure do |config|
     :region                 => ENV['AWS_REGION']
   }
   config.fog_directory  = ENV['AWS_BUCKET']
-  config.fog_public     = false
+  config.fog_public     = true
   config.cache_dir      = "#{Rails.root}/tmp/uploads" # To let CarrierWave work on heroku
 
 end

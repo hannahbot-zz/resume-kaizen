@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Resume do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it 'should be downloadable' do
+    pending
+
+  end
+
 end

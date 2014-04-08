@@ -1,5 +1,10 @@
 class ResumesController < ApplicationController
 
+  def index
+    @resumes = Resume.all
+    #Resume.visible_to(current_user)
+  end
+
   def show
     @resume = Resume.find(params[:id])
   end
@@ -18,6 +23,13 @@ class ResumesController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @resume = Resume.find(params[:id])
+    @resume.destroy
+    redirect_to resumes_path, notice:  "The resume #{@resume.name} has been deleted."
+  end
+
   private
 
   def resume_params
