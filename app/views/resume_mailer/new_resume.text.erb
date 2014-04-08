@@ -1,8 +1,6 @@
 New resume: "<%= @resume.name %>"
 <%= "=" * (@resume.name.length + 12) %>
 
-<%= @resume.body %>
+<%= link_to "Download Resume", @resume.file_url %>
 
 Visit online at: <%= resume_url(@resume) %>
-
-#not finished

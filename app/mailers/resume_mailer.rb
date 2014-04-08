@@ -9,7 +9,7 @@ class ResumeMailer < ActionMailer::Base
     headers["In-Reply-To"] = "<resume/#{@resume.id}@your-app-name.example>"
     headers["References"] = "<resume/#{@resume.id}@your-app-name.example>"
 
-    mail(to: user.email, subject: "New resume on #{resume.title}")
+    mail(to: user.email, subject: "New resume on #{resume.name}")
   end
 
 end

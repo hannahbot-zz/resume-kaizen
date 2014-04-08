@@ -6,13 +6,10 @@
   <body>
     <h1>New resume "<%= @resume.name %>"</h1>
     <p>
-      <%= @resume.body %>
+      <%= link_to "Download Resume", @resume.file_url %>
     </p>
     <p>
-      <%= link_to "Download", resume.download_url(@resume}") %>
+      <%= link_to "View Resume on site", resume_url(@resume) %>
     </p>
   </body>
 </html>
-
-
-#not finished
