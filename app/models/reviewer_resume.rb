@@ -1,0 +1,2 @@
+class ReviewerResume < Resume
+end

@@ -1,0 +1,2 @@
+class ReviewerResumesController < ResumesController
+end

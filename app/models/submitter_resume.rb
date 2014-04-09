@@ -1,0 +1,2 @@
+class SubmitterResume < Resume
+end

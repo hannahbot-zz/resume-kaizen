@@ -11,7 +11,7 @@ class Resume < ActiveRecord::Base
 
   def send_resume_emails
     self.resume.each do |resume|
-      FavoriteMailer.new_resume(resume.user, self.resume, self).deliver
+      ResumeMailer.new_resume(resume.user, self.resume, self).deliver
     end
   end
 
