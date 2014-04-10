@@ -21,7 +21,7 @@ describe User do
     end
   end
 
-  describe 'submitter' do
+  context 'submitter' do
     it_behaves_like "a user" do
     end
 
@@ -37,12 +37,8 @@ describe User do
     end
   end
 
-  describe 'reviewer' do
+  context 'reviewer' do
     it_behaves_like "a user" do
-    end
-
-    it 'should be able to write feedback' do #crocodoc?
-      pending
     end
   end
 

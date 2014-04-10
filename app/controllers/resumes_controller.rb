@@ -2,7 +2,6 @@ class ResumesController < ApplicationController
 
   def index
     @resumes = Resume.all
-    #Resume.visible_to(current_user)
   end
 
   def show
