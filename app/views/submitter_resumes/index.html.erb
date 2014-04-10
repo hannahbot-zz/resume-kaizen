@@ -1,0 +1,25 @@
+<h1>Listing submitter_resumes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @submitter_resumes.each do |submitter_resume| %>
+      <tr>
+        <td><%= link_to 'Show', submitter_resume %></td>
+        <td><%= link_to 'Edit', edit_submitter_resume_path(submitter_resume) %></td>
+        <td><%= link_to 'Destroy', submitter_resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Submitter resume', new_submitter_resume_path %>

@@ -1,5 +1,9 @@
 ResumeKaizen::Application.routes.draw do
 
+  resources :submitter_resumes
+
+  resources :reviewer_resumes
+
   devise_for :users
 
   resources :reviewers, controller: :users

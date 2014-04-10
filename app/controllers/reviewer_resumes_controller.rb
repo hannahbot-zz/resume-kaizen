@@ -1,21 +1,21 @@
 class ReviewerResumesController < ResumesController
 
   def index
-    @resumes = ReviewerResume.all
+    @reviewer_resumes = ReviewerResume.all
   end
 
   def show
-    @resume = ReviewerResume.find(params[:id])
-    authorize @resume
+    @reviewer_resume = ReviewerResume.find(params[:id])
+    authorize @reviewer_resume
   end
 
   def new
-    @resume = ReviewerResume.new
+    @reviewer_resume = ReviewerResume.new
   end
 
   def create
-    @resume = ReviewerResume.new(reviewer_resume_params)
-    if @resume.save
+    @reviewer_resume = ReviewerResume.new(reviewer_resume_params)
+    if @reviewer_resume.save
       flash[:notice] = "Resume submitted."
       redirect_to root_path
     else
@@ -25,9 +25,9 @@ class ReviewerResumesController < ResumesController
   end
 
   def destroy
-    @resume = ReviewerResume.find(params[:id])
-    @resume.destroy
-    redirect_to resumes_path, notice:  "The resume #{@resume.name} has been deleted."
+    @reviewer_resume = ReviewerResume.find(params[:id])
+    @reviewer_resume.destroy
+    redirect_to resumes_path, notice:  "The resume #{@reviewer_resume.name} has been deleted."
   end
 
   private
