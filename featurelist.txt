@@ -1,0 +1,31 @@
+A submitter should be able to log in: RegistrationsController#New
+A submitter should be able to upload a resume: SubmitterResumesController#New
+A submitter should be able to see all their uploaded resumes: SubmitterResumesController#Index
+A submitter should be able to see all their edited resumes: SubmitterResumesController#Index
+A submitter should be able to pay for a resume: SubmitterResumesController#New
+A submitter should be able to pick the resume's reviewer: SubmitterResumesController#New (as a flag)
+A submitter should be able to receive an edited resume: SubmitterResumesController#Update
+A submitter should receive a message saying their resume has been edited and is ready: ResumeMailer
+
+A reviewer should be able to log in: RegistrationsController#New
+A reviewer should be able to see all the submitted resumes assigned to them: ReviewerResumesController#Index
+	A reviewer should be able to mark them as complete: ReviewerResumesController#Destroy (Destroy Multiple)
+A reviewer should receive a message saying a resume has been assigned to them: ResumeMailer
+A reviewer should be able to upload an edited resume: Resume#New
+
+
+Homework:
+(1) Start associating these features with controller actions: 
+
+
+Submitter resume
+Contains submitter's resume
+Contains submitter's name
+Contains submitter's email
+Contains reviewer's id
+
+Reviewer resume
+Contain's reviewer's updated resume
+Contains reviewer's name
+Contains submitter's email
+Contains submitter's id
