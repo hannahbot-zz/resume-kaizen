@@ -1,4 +1,4 @@
-<h1>Listing reviewer_resumes</h1>
+<h1>Listing reviewer_resumes (Reviewed Resumes)</h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
     <% @reviewer_resumes.each do |reviewer_resume| %>
       <tr>
         <td><%= link_to 'Show', reviewer_resume %></td>
-        <td><%= link_to 'Edit', edit_reviewer_resume_path(reviewer_resume) %></td>
+        <td><%= link_to 'Download Resume', reviewer_resume.file_url, class: "btn btn-info" %></td>
         <td><%= link_to 'Destroy', reviewer_resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Reviewer resume', new_reviewer_resume_path %>
+<%= link_to 'New reviewer resume', new_reviewer_resume_path %>

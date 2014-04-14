@@ -1,4 +1,4 @@
-<h1>Listing submitter_resumes</h1>
+<h1>Listing submitter_resumes (Submitted Resumes)</h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
     <% @submitter_resumes.each do |submitter_resume| %>
       <tr>
         <td><%= link_to 'Show', submitter_resume %></td>
-        <td><%= link_to 'Edit', edit_submitter_resume_path(submitter_resume) %></td>
+        <td><%= link_to 'Download Resume', submitter_resume.file_url, class: "btn btn-info" %></td>
         <td><%= link_to 'Destroy', submitter_resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
