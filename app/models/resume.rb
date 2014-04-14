@@ -3,8 +3,8 @@ class Resume < ActiveRecord::Base
 
   mount_uploader :file, FileUploader
 
-  has_many :messages, dependent: :destroy
-
-  after_create :send_resume_emails
+  # has_many :messages, dependent: :destroy
+  #
+  # after_create :send_resume_emails
 
 end

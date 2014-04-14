@@ -1,20 +1,22 @@
-<h1>Listing submitter_resumes (Submitted Resumes)</h1>
+<h1>Reviewed Resumes</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Reviewer</th>
+      <th>Date uploaded</th>
+      <th>Download link</th>
+      <th>Delete link</th>
     </tr>
   </thead>
 
   <tbody>
     <% @submitter_resumes.each do |submitter_resume| %>
       <tr>
-        <td><%= link_to 'Show', submitter_resume %></td>
+        <td><%= submitter_resume.submitter_id %></td>
+        <td><%= submitter_resume.created_at %></td>
         <td><%= link_to 'Download Resume', submitter_resume.file_url, class: "btn btn-info" %></td>
-        <td><%= link_to 'Destroy', submitter_resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', submitter_resume, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Submitter resume', new_submitter_resume_path %>
+<%= link_to 'Upload another resume', new_submitter_resume_path %>
