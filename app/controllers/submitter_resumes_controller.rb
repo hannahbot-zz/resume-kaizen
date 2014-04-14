@@ -15,6 +15,7 @@ class SubmitterResumesController < ResumesController
 
   def create
     @submitter_resume = SubmitterResume.new(submitter_resume_params)
+    @submitter_resume.submitter_id = current_user.id
     if @submitter_resume.save
       flash[:notice] = "Resume submitted."
       redirect_to submitter_resumes_path
