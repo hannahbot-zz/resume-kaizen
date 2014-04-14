@@ -17,7 +17,7 @@ class ReviewerResumesController < ResumesController
     @reviewer_resume = ReviewerResume.new(reviewer_resume_params)
     if @reviewer_resume.save
       flash[:notice] = "Resume submitted."
-      redirect_to root_path
+      redirect_to reviewer_resumes_path
     else
       flash[:error] = "There was an error. Please try again."
       render :new
@@ -27,7 +27,7 @@ class ReviewerResumesController < ResumesController
   def destroy
     @reviewer_resume = ReviewerResume.find(params[:id])
     @reviewer_resume.destroy
-    redirect_to resumes_path, notice:  "The resume #{@reviewer_resume.name} has been deleted."
+    redirect_to reviewer_resumes_path, notice:  "The resume #{@reviewer_resume.name} has been deleted."
   end
 
   private
