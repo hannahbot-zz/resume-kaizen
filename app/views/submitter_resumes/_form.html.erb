@@ -14,6 +14,7 @@
   <div class="control-group">
     <%= f.label :reviewer_id, class: 'control-label'  %>
     <div class="controls">
+    <%= collection_select(:submitter_resume, :reviewer_id, User.all, :id, :name) %>
     </div>
   </div>
 

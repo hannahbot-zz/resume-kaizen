@@ -30,6 +30,15 @@ class ReviewerResumesController < ResumesController
     redirect_to reviewer_resumes_path, notice:  "The resume #{@reviewer_resume.name} has been deleted."
   end
 
+  # def completed
+  #   @reviewer_resume = ReviewerResume.where(id: params[:completed][:item_ids])
+  #   @reviewer_resumes.each do |resumes|
+  #     resume.destroy
+  #   end
+  #   redirect_to reviewer_resumes_path
+  # end
+
+
   private
 
   def reviewer_resume_params
