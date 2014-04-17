@@ -13,6 +13,11 @@ class ResumesController < ApplicationController
     @resume = Resume.new
   end
 
+  def update
+    @resume = Resume.find(params[:id])
+    edited_link = view_context.link_to("edited", edited_version_path(@resume.versions.next))
+  end
+
   def create
     @resume = Resume.new(resume_params)
     if @resume.save

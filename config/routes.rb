@@ -10,4 +10,7 @@ ResumeKaizen::Application.routes.draw do
   match "about" => 'welcome#about', via: :get
   match "reviewers" => 'welcome#reviewers', via: :get
 
+  post "versions/:id/edited" => "versions#edited", :as => "edited_version"
+  post "versions/:id/original" => "versions#original", :as => "original_version"
+
 end

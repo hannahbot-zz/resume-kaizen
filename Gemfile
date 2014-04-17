@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Versioning
+gem 'paper_trail', '~> 3.0.1'
+
 # Crocodoc
 gem 'crocodoc-ruby'
 

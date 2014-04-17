@@ -3,6 +3,8 @@ class Resume < ActiveRecord::Base
   belongs_to :reviewer, class_name: "User", foreign_key: "reviewer_id"
   mount_uploader :file, FileUploader
 
+  has_paper_trail
+  
   # has_many :messages, dependent: :destroy
   #
   # after_create :send_resume_emails
