@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140410020128) do
+ActiveRecord::Schema.define(version: 20140418145153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "messages", force: true do |t|
-    t.integer  "resume_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "messages", ["resume_id"], name: "index_messages_on_resume_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "resumes", force: true do |t|
     t.string   "name"
@@ -35,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140410020128) do
     t.string   "type"
     t.integer  "reviewer_id"
     t.integer  "submitter_id"
+    t.integer  "group_id"
   end
 
   create_table "users", force: true do |t|
