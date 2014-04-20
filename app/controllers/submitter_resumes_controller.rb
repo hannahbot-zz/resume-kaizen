@@ -5,8 +5,17 @@ class SubmitterResumesController < ResumesController
   end
 
   def show
-    @submitter_resume = SubmitterResume.find(params[:id])
-    authorize @submitter_resume
+    @submitter_resume = Resume.find(params[:id])
+
+    #One line to collect all of the ids
+    resumes = {}
+    #A second line to iterate through the ids and create the arrays
+    group_id_collection.each do |group_id|
+      resumes[group_id] = Resume.where(group_id: group_id)
+    end
+
+  binding.pry
+
   end
 
   def new
@@ -16,6 +25,7 @@ class SubmitterResumesController < ResumesController
   def create
     @submitter_resume = SubmitterResume.new(submitter_resume_params)
     @submitter_resume.submitter_id = current_user.id
+    @submitter_resume.group_id = current_user.id += 1
     if @submitter_resume.save
       flash[:notice] = "Resume submitted."
       redirect_to submitter_resumes_path

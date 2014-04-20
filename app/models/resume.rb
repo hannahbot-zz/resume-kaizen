@@ -1,6 +1,5 @@
 class Resume < ActiveRecord::Base
-  belongs_to :submitter, class_name: "User", foreign_key: "submitter_id"
-  belongs_to :reviewer, class_name: "User", foreign_key: "reviewer_id"
+  belongs_to :user
   mount_uploader :file, FileUploader
 
   # has_many :messages, dependent: :destroy

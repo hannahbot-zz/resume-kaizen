@@ -6,7 +6,14 @@ class ResumesController < ApplicationController
 
   def show
     @resume = Resume.find(params[:id])
-    authorize @resume
+    group_id_collection = current_user.resumes.select(:group_id)
+    #One line to collect all of the ids
+    resumes = {}
+    #A second line to iterate through the ids and create the arrays
+    group_id_collection.each do |group_id|
+      resumes[group_id] = Resume.where(group_id: group_id)
+    end
+  binding.pry
   end
 
   def new
