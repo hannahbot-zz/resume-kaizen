@@ -1,7 +1,8 @@
 class ResumesController < ApplicationController
 
   def index
-    @resumes = Resume.includes(resumes_array)
+    @resumes = resumes_array
+
   end
 
   def show
@@ -14,6 +15,7 @@ class ResumesController < ApplicationController
 
   def create
     @resume = Resume.new(resume_params)
+    @resume.user_id = current_user.id
     if @resume.save
       flash[:notice] = "Resume submitted."
       redirect_to root_path
