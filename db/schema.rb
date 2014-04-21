@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20140418162118) do
     t.datetime "updated_at"
     t.string   "file"
     t.string   "email"
-    t.string   "type"
     t.integer  "group_id"
     t.integer  "user_id"
   end
