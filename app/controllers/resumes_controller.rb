@@ -16,28 +16,14 @@ class ResumesController < ApplicationController
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
-    @resume.group_id =
     if @resume.save
       flash[:notice] = "Resume submitted."
-      redirect_to root_path
+      redirect_to resumes_path
     else
       flash[:error] = "There was an error. Please try again."
       render :new
     end
   end
-
-  # def create
-  #   @submitter_resume = SubmitterResume.new(submitter_resume_params)
-  #   @submitter_resume.submitter_id = current_user.id
-  #   @submitter_resume.group_id = current_user.id += 1
-  #   if @submitter_resume.save
-  #     flash[:notice] = "Resume submitted."
-  #     redirect_to submitter_resumes_path
-  #   else
-  #     flash[:error] = "There was an error. Please try again."
-  #     render :new
-  #   end
-  # end
 
   def destroy
     @resume = Resume.find(params[:id])
