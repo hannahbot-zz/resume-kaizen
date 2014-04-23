@@ -1,17 +1,28 @@
 <h1>My resumes</h1>
 
-<div class="row">
-  <div class="span8">
-    <% @resumes.keys.each do |key| %>
-      <% @resumes[key].each do |resume| %>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">
-              <%= link_to resume.name %>
-            </h4>
-          </div>
-        </div>
-        <% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Reviewer Name</th>
+      <th>Date uploaded</th>
+      <th>Download link</th>
+      <th>Delete link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @resumes.keys.each do |key| %>
+    <% @resumes[key].each do |resume| %>
+        <tr>
+          <td><%= resume.created_at %></td>
+          <td><%= link_to 'Download Resume', resume.file_url, class: "btn btn-info" %></td>
+          <td><%= link_to 'Destroy', resume, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
     <% end %>
-  </div>
-</div>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Upload another resume', new_submitter_resume_path %>

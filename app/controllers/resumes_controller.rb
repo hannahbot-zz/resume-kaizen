@@ -16,7 +16,7 @@ class ResumesController < ApplicationController
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
-    @resume.group_id = 
+    @resume.group_id =
     if @resume.save
       flash[:notice] = "Resume submitted."
       redirect_to root_path
