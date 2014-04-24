@@ -15,5 +15,11 @@ class User < ActiveRecord::Base
   def reviewer?
     role == "reviewer"
   end
+
+  #overrides has_many
+  def resumes
+    (Resume.where(user_id: id).pluck(:group_id) + Resume.where(reviewer_id: id).pluck(:group_id)).uniq!
+    #resumes i own + resumes i review
+  end
   
 end

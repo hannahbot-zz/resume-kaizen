@@ -5,7 +5,8 @@
     <tr>
       <th>Reviewer Name</th>
       <th>Date uploaded</th>
-      <th>Download link</th>
+      <th>Download original resume link</th>
+      <th>Download edited resume link</th>
       <th>Delete link</th>
     </tr>
   </thead>
@@ -16,7 +17,8 @@
         <tr>
           <td><%= resume.name %></td>
           <td><%= resume.created_at %></td>
-          <td><%= link_to 'Download Resume', resume.file_url, class: "btn btn-info" %></td>
+          <td><%= link_to 'Download Original Resume', resume.file_url, class: "btn btn-info" %></td>
+          <td><%= link_to 'Download Edited Resume', resume.file_url, class: "btn btn-info" %></td>
           <td><%= link_to 'Destroy', resume, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>

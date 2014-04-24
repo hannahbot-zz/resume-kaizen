@@ -2,7 +2,6 @@ class ResumesController < ApplicationController
 
   def index
     @resumes = resumes_array
-    #binding.pry
   end
 
   def show
@@ -16,6 +15,7 @@ class ResumesController < ApplicationController
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
+    @resume.group_id = @resume.id
     if @resume.save
       flash[:notice] = "Resume submitted."
       redirect_to resumes_path
@@ -38,7 +38,7 @@ class ResumesController < ApplicationController
   end
 
   def resumes_array
-    group_id_collection = current_user.resumes.pluck(:group_id).uniq
+  group_id_collection = current_user.resumes
     #One line to collect all of the ids
     resumes = {}
     #A second line to iterate through the ids and create the arrays
@@ -46,8 +46,10 @@ class ResumesController < ApplicationController
       resumes[group_id] = Resume.where(group_id: group_id)
     end
 
-
     return resumes
   end
 
 end
+
+
+#pass in group_id through hidden parameter in a form so reviewer has group_id 
