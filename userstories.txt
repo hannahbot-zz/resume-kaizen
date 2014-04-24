@@ -1,0 +1,48 @@
+Assumptions:
+There can never be a user that is both a reviewer and a submitter
+There is only one revision of the resume
+
+
+As a User
+
+I can log into the website
+I can log out of the website
+I can change my password
+
+As a Submitter
+
+I can look at all the reviewer profiles
+I can choose the Reviewer from a drop down list in the resume upload form
+I can upload a resume successfully
+I can pay for the edited resume
+I can see my submitted resume in “My Resumes”
+I can download the submitted resume
+I can see who the reviewer is
+I can see the date I submitted it
+I can receive an email saying my resume was reviewed
+I can go to the “My resumes” page from the email
+I can download the edited resume from the email
+I can see the returned edited resume in “My Resumes”
+I can download the returned edited resume
+I can see the date it was returned
+I can see how much I paid
+
+As a Reviewer
+
+I can look at all the reviewer profiles
+
+I can receive an email saying a resume was submitted
+I can go to the “My resumes” page from the email
+I can download the resume from the email
+
+I can see the name of the submitter in “My Resumes"
+I can see the date it was submitted in “My Resumes"
+
+I can see the resume in “My Resumes”
+I can download the resume from “My Resumes"
+I can upload a resume successfully
+I can see my edited resume in “My Resumes”
+I can download the edited resume
+I can see the date I submitted the resume it
+When I upload a resume, it marks it as complete and moves to “Completed Resumes”
+I can see how much I was paid

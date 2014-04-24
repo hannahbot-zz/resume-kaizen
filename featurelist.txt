@@ -13,11 +13,6 @@ A reviewer should be able to see all the submitted resumes assigned to them: Rev
 A reviewer should receive a message saying a resume has been assigned to them: ResumeMailer
 A reviewer should be able to upload an edited resume: Resume#New
 
-
-Homework:
-(1) Start associating these features with controller actions: 
-
-
 Submitter resume
 Contains submitter's resume
 Contains submitter's name
