@@ -9,14 +9,15 @@ class ResumesController < ApplicationController
   end
 
   def new
-    @resume = Resume.new(:group_id => params[:group_id])
+    @resume = Resume.new
+    @resume.group_id = params[:group_id]
   end
 
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
     @resume.email = current_user.email    
-      
+  
     if @resume.save
       flash[:notice] = "Resume submitted."
       redirect_to resumes_path
