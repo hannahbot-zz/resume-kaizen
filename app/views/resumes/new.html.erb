@@ -1,2 +1,7 @@
-<h1>Send us your resume!</h1>
-<%= render partial: 'form' %>
+<h1>Upload a Resume</h1>
+
+<% if current_user.submitter? %>
+    <%= render 'submitter_form' %>
+<% else %>
+    <%= render 'reviewer_form' %>
+<% end %>
