@@ -10,11 +10,14 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= f.hidden_field :group_id, :value => params[:group_id] %>
+  <%= f.hidden_field :user_id, :value => params[:user_id] %>
 
   <div class="control-group">
     <%= f.label :reviewer_id, class: 'control-label'  %>
     <div class="controls">
-    <%= collection_select(:resume, :name, User.where(:role => :reviewer), :name, :name) %>
+    <%= collection_select(:resume, :reviewer, User.where(:role => :reviewer), :id, :name) %>
     </div>
   </div>
 
@@ -28,4 +31,3 @@
   <div><%= f.submit "Submit!" %></div>
 <% end %>
 
-#check for user.role

@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
 
   #overrides has_many
   def resumes
-    (Resume.where(user_id: id).pluck(:group_id) + Resume.where(reviewer_id: id).pluck(:group_id)).uniq!
+    (Resume.where(user_id: id).pluck(:group_id) + Resume.where(reviewer_id: id).pluck(:group_id))
+
+    # (Resume.where(user_id: id).pluck(:group_id) + Resume.where(reviewer_id: id).pluck(:group_id)).uniq!
     #resumes i own + resumes i review
   end
   

@@ -42,6 +42,7 @@ class ResumesController < ApplicationController
     #One line to collect all of the ids
     resumes = {}
     #A second line to iterate through the ids and create the arrays
+    # binding.pry
     group_id_collection.each do |group_id|
       resumes[group_id] = Resume.where(group_id: group_id)
     end
