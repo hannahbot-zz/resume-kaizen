@@ -34,7 +34,7 @@ class ResumesController < ApplicationController
   private
 
   def resume_params
-    params.require(:resume).permit(:name, :email, :file)
+    params.require(:resume).permit(:name, :email, :file, :reviewer_id)
   end
 
   def resumes_array
