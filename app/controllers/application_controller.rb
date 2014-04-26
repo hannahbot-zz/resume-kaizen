@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: exception.message
   end
 
+  before_action :authenticate_user!
+
   protected
 
   def configure_permitted_parameters

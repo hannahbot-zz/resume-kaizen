@@ -9,14 +9,13 @@ class ResumesController < ApplicationController
   end
 
   def new
-    @resume = Resume.new
+    @resume = Resume.new(:group_id => params[:group_id])
   end
 
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
     @resume.email = current_user.email    
-    @resume.group_id = @resume.id
       
     if @resume.save
       flash[:notice] = "Resume submitted."
@@ -25,7 +24,6 @@ class ResumesController < ApplicationController
       flash[:error] = "There was an error. Please try again."
       render :new
     end
-
   end
 
   def destroy
@@ -37,7 +35,7 @@ class ResumesController < ApplicationController
   private
 
   def resume_params
-    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id)
+    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id)
   end
 
   def resumes_array

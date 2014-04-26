@@ -1,0 +1,33 @@
+<h1>My resumes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Reviewer Name</th>
+      <th>Date sent</th>
+      <th>Download original resume link</th>
+      <th>Download edited resume link</th>
+      <th>Date Recieved</th>
+      <th>Delete link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @resumes.keys.each do |key| %>
+    <% @resumes[key].each do |resume| %>
+        <tr>
+          <td><%= resume.group_id %></td>
+          <td><%= resume.created_at %></td>
+          <td><%= link_to 'Download Original Resume', resume.file_url, class: "btn btn-info" %></td>
+          <td><%= link_to 'Download Edited Resume', resume.file_url, class: "btn btn-info" %></td>
+          <td><%= resume.updated_at %></td>
+          <td><%= link_to 'Destroy', resume, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+        </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Upload another resume', new_resume_path %>
