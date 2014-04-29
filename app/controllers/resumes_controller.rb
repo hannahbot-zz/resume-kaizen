@@ -7,16 +7,18 @@ class ResumesController < ApplicationController
   def show
     @resume = Resume.find(params[:id])
   end
-
+  
   def new
     @resume = Resume.new
-    @resume.group_id = params[:group_id]
+    @group_id = params[:group_id]
   end
 
   def create
+    # binding.pry
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
-    @resume.email = current_user.email    
+    @resume.email = current_user.email
+    @resume.name = current_user.name    
   
     if @resume.save
       flash[:notice] = "Resume submitted."
@@ -25,8 +27,9 @@ class ResumesController < ApplicationController
       flash[:error] = "There was an error. Please try again."
       render :new
     end
-  end
 
+  end
+  
   def destroy
     @resume = Resume.find(params[:id])
     @resume.destroy
@@ -53,6 +56,3 @@ class ResumesController < ApplicationController
   end
 
 end
-
-
-#pass in group_id through hidden parameter in a form so reviewer has group_id 
