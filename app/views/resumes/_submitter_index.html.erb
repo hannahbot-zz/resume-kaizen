@@ -5,22 +5,25 @@
     <tr>
       <th>Reviewer Name</th>
       <th>Date sent</th>
-      <th>Download original resume link</th>
-      <th>Download edited resume link</th>
-      <th>Date Recieved</th>
+      <th>Job link</th>
+      <th>Job Description</th>
+      <th>Download resume</th>
       <th>Delete link</th>
     </tr>
   </thead>
 
   <tbody>
   <% @resumes.keys.each do |key| %>
+  <tr><TD>Resume Groups</TD></tr>
+
     <% @resumes[key].each do |resume| %>
         <tr>
-          <td><%= resume.group_id %></td>
+          <td><%= resume.name %></td>
           <td><%= resume.created_at %></td>
-          <td><%= link_to 'Download Original Resume', resume.file_url, class: "btn btn-info" %></td>
-          <td><%= link_to 'Download Edited Resume', resume.file_url, class: "btn btn-info" %></td>
-          <td><%= resume.updated_at %></td>
+          <td><%= resume.job_link %></td>
+          <td><%= resume.job_description %></td>
+
+          <td><%= link_to 'Download Resume', resume.file_url, class: "btn btn-info" %></td>
           <td><%= link_to 'Destroy', resume, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
         </tr>
     <% end %>

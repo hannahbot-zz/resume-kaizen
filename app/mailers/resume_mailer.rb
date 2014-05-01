@@ -1,26 +1,15 @@
 class ResumeMailer < ActionMailer::Base
   default from: "resumekaizen@example.com"
 
-  def submitter_resume(user, resume)
-    @user = user
+  def new_resume(user, resume)
     @resume = resume
+    @user = user
 
     headers["Message-ID"] = "<resume/#{@resume.id}@your-app-name.example>"
     headers["In-Reply-To"] = "<resume/#{@resume.id}@your-app-name.example>"
     headers["References"] = "<resume/#{@resume.id}@your-app-name.example>"
-
-    mail(to: user.email, subject: "New resume on #{resume.name}")
+    # binding.pry
+    mail(to: resume.email, subject: "New resume on #{resume.name}")
   end
 
-
-  def reviewer_resume(user, resume)
-    @user = user
-    @resume = resume
-
-    headers["Message-ID"] = "<resume/#{@resume.id}@your-app-name.example>"
-    headers["In-Reply-To"] = "<resume/#{@resume.id}@your-app-name.example>"
-    headers["References"] = "<resume/#{@resume.id}@your-app-name.example>"
-
-    mail(to: user.email, subject: "New resume on #{resume.name}")
-  end
 end

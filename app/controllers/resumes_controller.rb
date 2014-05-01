@@ -14,13 +14,13 @@ class ResumesController < ApplicationController
   end
 
   def create
-    # binding.pry
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
     @resume.email = current_user.email
     @resume.name = current_user.name    
   
     if @resume.save
+      ResumeMailer.new_resume(@user, @resume).deliver
       flash[:notice] = "Resume submitted."
       redirect_to resumes_path
     else
@@ -39,7 +39,7 @@ class ResumesController < ApplicationController
   private
 
   def resume_params
-    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id)
+    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id, :job_link, :job_description)
   end
 
   def resumes_array
