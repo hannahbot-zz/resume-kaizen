@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-# Crocodoc
-gem 'crocodoc-ruby'
+# Foundation
+gem 'foundation-rails'
 
 # Rest-client
 gem 'rest-client'
@@ -23,6 +23,9 @@ gem 'carrierwave'
 
 # Devise
 gem 'devise'
+
+# Stripe
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # RSpec
 group :development, :test do

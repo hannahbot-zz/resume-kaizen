@@ -7,8 +7,10 @@
       <th>Date Received</th>
       <th>Job link</th>
       <th>Job Description</th>
-      <th>Download resume</th>
+      <th>Download submitted resume</th>
+      <th>Download reviewed resume</th>
       <th>Send edited resume link</th>
+      <th>Amount Paid</th>
       <th>Delete link</th>
     </tr>
   </thead>
@@ -16,21 +18,17 @@
   <tbody>
 
   <% @resumes.keys.each do |key| %>
-    <tr><TD>Resume Groups</TD></tr>
-    <tr><td></td></tr>
-
-    <% @resumes[key].each do |resume| %>
-        <tr>
-
-          <td><%= resume.name %></td>
-          <td><%= resume.created_at %></td>
-          <td><%= resume.job_link %></td>
-          <td><%= resume.job_description %></td>
-          <td><%= link_to 'Download Resume', resume.file_url, class: "btn btn-info" %></td>
-          <td><%= link_to 'Send Edited Resume', new_resume_path(group_id: resume.group_id, name: current_user.name), class: "btn btn-info" unless resume.name == current_user.name %></td>
-          <td><%= link_to 'Destroy', resume, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
-        </tr>
-    <% end %>
+    <tr>
+      <td><%= @resumes[key].first.name %></td>
+      <td><%= @resumes[key].first.created_at %></td>
+      <td><%= @resumes[key].first.job_link %></td>
+      <td><%= @resumes[key].first.job_description %></td>
+      <td><%= link_to 'Submitted Resume', @resumes[key].first.file_url, class: "btn btn-info" %></td>
+      <td><%= link_to 'Edited Resume', @resumes[key].last.file_url, class: "btn btn-info" %></td>
+      <td><%= link_to 'Send Edited Resume', new_resume_path(group_id: @resumes[key].first.group_id, name: @resumes[key].first.name), class: "btn btn-info" %></td>
+      <td>5 dollars</td>    
+      <td><%= link_to 'Destroy', @resumes[key].first, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+    </tr>
   <% end %>
   </tbody>
 </table>
