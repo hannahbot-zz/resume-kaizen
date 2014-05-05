@@ -39,31 +39,35 @@
     </div>
   </div>
 
-<script src="https://checkout.stripe.com/checkout.js"></script>
-<button id="customButton">Purchase</button>
+    <div class="control-group">
+    <%= f.label "Enter a price you think is fair (in cents)", class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :price %>
+    </div>
+  </div>
 
-<script>
-  var handler = StripeCheckout.configure({
-    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
-    image: '/square-image.png',
-    token: function(token, args) {
-      // Use the token to create the charge with a server-side script.
-      // You can access the token ID with `token.id`
-    }
-  });
+  <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 
-  document.getElementById('customButton').addEventListener('click', function(e) {
-    // Open Checkout with further options
-    StripeCheckout.open({
-      name: 'Demo Site',
-      description: '2 widgets ($20.00)',
-      amount: $('#payAmount')
+  <button id="customButton">Purchase</button>
+
+  <script>
+    $('#customButton').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+        $('form').append($input).submit();
+      };
+
+      StripeCheckout.open({
+        key:         'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+        amount:      $("#resume_price").val(), 
+        currency:    'usd',
+        name:        'Resume Kaizen',
+        description: 'A resume reviewing service',
+        token:       token
+      });
+      return false;
     });
-    e.preventDefault();
-  });
-</script>
-
-
-  <div><%= f.submit "Submit!" %></div>
+  </script>
 <% end %>
 

@@ -17,7 +17,7 @@ class ResumesController < ApplicationController
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
     @resume.email = current_user.email
-    @resume.name = current_user.name    
+    @resume.name = User.find(params[:resume][:reviewer_id]).name    
   
     if @resume.save
       ResumeMailer.new_resume(@user, @resume).deliver
