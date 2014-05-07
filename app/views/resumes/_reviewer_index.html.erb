@@ -3,7 +3,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Submitter Name</th>
       <th>Date Received</th>
       <th>Job link</th>
       <th>Job Description</th>
@@ -24,10 +24,21 @@
       <td><%= @resumes[key].first.job_link %></td>
       <td><%= @resumes[key].first.job_description %></td>
       <td><%= link_to 'Submitted Resume', @resumes[key].first.file_url, class: "btn btn-info" %></td>
-      <td><%= link_to 'Edited Resume', @resumes[key].last.file_url, class: "btn btn-info" %></td>
-      <td><%= link_to 'Send Edited Resume', new_resume_path(group_id: @resumes[key].first.group_id, name: @resumes[key].first.name), class: "btn btn-info" %></td>
-      <td>5 dollars</td>    
-      <td><%= link_to 'Destroy', @resumes[key].first, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+      
+      <% if @resumes[key].count == 2 %>
+        <td><%= link_to 'Edited Resume', @resumes[key].last.file_url, class: "btn btn-info" %></td>
+      <% else %>
+       <td>Not Available Yet!</td>
+      <% end %> 
+
+      <% if @resumes[key].count == 2 %>
+        <td>Submitted!</td>
+      <% else %>
+      <td><%= link_to 'Send Edited Resume', new_resume_path(group_id: @resumes[key].first.group_id, reviewer_id: @resumes[key].first.reviewer_id, name: @resumes[key].first.name), class: "btn btn-info" %></td>
+      <% end %> 
+
+      <td><%= @resumes[key].first.price %></td>    
+      <td><%= link_to 'Destroy', @resumes[key].first, class: "btn btn-danger", method: :delete, remote: true %></td>  
     </tr>
   <% end %>
   </tbody>

@@ -8,7 +8,7 @@
       <th>Job link</th>
       <th>Job Description</th>
       <th>Download submitted resume</th>
-      <th>Download reviewed resume</th>
+        <th>Download reviewed resume</th>
       <th>Amount Paid</th>
       <th>Delete link</th>
     </tr>
@@ -21,9 +21,16 @@
         <td><%= @resumes[key].first.created_at %></td>
         <td><%= @resumes[key].first.job_link %></td>
         <td><%= @resumes[key].first.job_description %></td>
+        
         <td><%= link_to 'Download Resume', @resumes[key].first.file_url, class: "btn btn-info" %></td>
-        <td><%= link_to 'Download Resume', @resumes[key].last.file_url, class: "btn btn-info" %></td>
-        <td>5 dollars</td>
+        
+        <% if @resumes[key].count == 2 %>
+          <td><%= link_to 'Download Resume', @resumes[key].last.file_url, class: "btn btn-info" %></td>
+        <% else %> 
+          <td>Not Available Yet!</td>
+        <% end %>  
+        
+        <td><%= @resumes[key].first.price %></td>    
         <td><%= link_to 'Destroy', @resumes[key].first, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
       </tr>
   <% end %>

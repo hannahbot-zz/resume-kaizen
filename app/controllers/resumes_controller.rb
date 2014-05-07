@@ -1,4 +1,5 @@
 class ResumesController < ApplicationController
+  respond_to :html, :js
 
   def index
     @resumes = resumes_array
@@ -17,7 +18,9 @@ class ResumesController < ApplicationController
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
     @resume.email = current_user.email
-    @resume.name = User.find(params[:resume][:reviewer_id]).name    
+    # @resume.name = current_user.name
+
+      @resume.name = User.find(params[:resume][:reviewer_id]).name   
   
     if @resume.save
       ResumeMailer.new_resume(@user, @resume).deliver
@@ -32,14 +35,22 @@ class ResumesController < ApplicationController
   
   def destroy
     @resume = Resume.find(params[:id])
-    @resume.destroy
-    redirect_to resumes_path, notice:  "The resume #{@resume.name} has been deleted."
+    if @resume.destroy
+      flash[:notice] = "The resume #{@resume.name} has been deleted."
+      redirect_to resumes_path
+    else
+      flash[:error] = "There was an error. Please try again."
+    end
+
+    respond_with(@resume) do |f|
+      f.html { redirect_to resumes_path }
+    end
   end
 
   private
 
   def resume_params
-    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id, :job_link, :job_description)
+    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id, :job_link, :job_description, :price)
   end
 
   def resumes_array
