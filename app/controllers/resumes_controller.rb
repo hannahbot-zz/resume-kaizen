@@ -3,6 +3,8 @@ class ResumesController < ApplicationController
 
   def index
     @resumes = resumes_array
+    @resume = Resume.new
+
   end
 
   def show
@@ -12,6 +14,8 @@ class ResumesController < ApplicationController
   def new
     @resume = Resume.new
     @group_id = params[:group_id]
+    @name = params[:name]
+    @reviewer_id = params[:reviewer_id]
   end
 
   def create
@@ -20,8 +24,8 @@ class ResumesController < ApplicationController
     @resume.email = current_user.email
     # @resume.name = current_user.name
 
-      @resume.name = User.find(params[:resume][:reviewer_id]).name   
-  
+    @resume.name = User.find(params[:resume][:reviewer_id]).name   
+    
     if @resume.save
       ResumeMailer.new_resume(@user, @resume).deliver
       flash[:notice] = "Resume submitted."
@@ -37,7 +41,6 @@ class ResumesController < ApplicationController
     @resume = Resume.find(params[:id])
     if @resume.destroy
       flash[:notice] = "The resume #{@resume.name} has been deleted."
-      redirect_to resumes_path
     else
       flash[:error] = "There was an error. Please try again."
     end
