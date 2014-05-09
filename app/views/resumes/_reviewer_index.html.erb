@@ -20,9 +20,10 @@
   <% @resumes.keys.each do |key| %>
     <tr>
       <td><%= @resumes[key].first.name %></td><!-- resume.name -->
-      <td><%= @resumes[key].first.created_at %></td>
-      <td><%= @resumes[key].first.job_link %></td>
-      <td><%= @resumes[key].first.job_description %></td>
+      <td><%= @resumes[key].first.created_at.strftime('%m/%d/%Y') %></td>
+      <td class="truncate"><%= link_to "Link to Job", @resumes[key].first.job_link %></td>
+      <td class="truncate"><%= @resumes[key].first.job_description %></td>
+      
       <td><%= link_to 'Submitted Resume', @resumes[key].first.file_url, class: "btn btn-info" %></td>
       <% if @resumes[key].count == 2 %>
         <td><%= link_to 'Edited Resume', @resumes[key].last.file_url, class: "btn btn-info" %></td>
@@ -33,7 +34,7 @@
       <% if @resumes[key].count == 2 %>
         <td>Submitted!</td>
       <% else %>
-      <td><%= link_to 'Send Edited Resume', "#", :"data-reveal-id" => "reviewerForm", class: "send-resume-link", :"data-group-id" => @resumes[key].first.group_id, :"data-name" => @resumes[key].first.name, :"data-reviewer-id" => @resumes[key].first.reviewer_id %></td>
+      <td><%= link_to('Send Edited Resume', new_resume_path(user_id: @resumes[key].first.user_id) , :"data-reveal-id" => "reviewerForm", class: "send-resume-link", :"data-group-id" => @resumes[key].first.group_id, :"data-name" => @resumes[key].first.name, :"data-reviewer-id" => @resumes[key].first.reviewer_id) %></td>
       <% end %> 
 
       <td><%= @resumes[key].first.price %></td>    

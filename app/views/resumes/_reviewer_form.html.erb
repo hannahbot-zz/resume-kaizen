@@ -14,13 +14,7 @@
   <%= f.hidden_field :group_id, value: @group_id %>
   <%= f.hidden_field :name, value: @name %>
   <%= f.hidden_field :reviewer_id, value: @reviewer_id %>
-
-  <div class="control-group">
-    <%= f.label :reviewer_id, class: 'control-label'  %>
-    <div class="controls">
-    <%= f.collection_select(:user_id, User.where(:role => :submitter), :id, :name) %>
-    </div>
-  </div>
+  <%= f.hidden_field :user_id, value: @user_id %>
 
   <div class="control-group">
     <%= f.label :file, class: 'control-label' %>

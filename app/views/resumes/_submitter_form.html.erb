@@ -21,14 +21,14 @@
   <div class="control-group">
     <%= f.label :job_link, class: 'control-label'  %>
     <div class="controls">
-      <%= f.url_field :job_link, :autofocus => true %>
+      <%= f.url_field :job_link, rows: 1, :autofocus => true %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :job_description, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_area :job_description, rows: 8 %>
+      <%= f.text_area :job_description, rows: 3 %>
     </div>
   </div>
 

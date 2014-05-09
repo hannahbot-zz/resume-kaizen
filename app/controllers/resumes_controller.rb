@@ -16,13 +16,13 @@ class ResumesController < ApplicationController
     @group_id = params[:group_id]
     @name = params[:name]
     @reviewer_id = params[:reviewer_id]
+    @user_id = params[:user_id]
   end
 
   def create
     @resume = Resume.new(resume_params)
     @resume.user_id = current_user.id
     @resume.email = current_user.email
-    # @resume.name = current_user.name
 
     @resume.name = User.find(params[:resume][:reviewer_id]).name   
     
