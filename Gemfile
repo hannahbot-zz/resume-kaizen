@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Autonumeric
+gem 'autonumeric-rails'
+
+# Money
+gem 'money-rails'
+
 # Foundation
 gem 'foundation-rails'
 

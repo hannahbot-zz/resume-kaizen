@@ -8,7 +8,7 @@
       <th>Job link</th>
       <th>Job Description</th>
       <th>Download submitted resume</th>
-        <th>Download reviewed resume</th>
+      <th>Download reviewed resume</th>
       <th>Amount Paid</th>
       <th>Delete link</th>
     </tr>
@@ -18,8 +18,8 @@
   <% @resumes.keys.each do |key| %>
       <tr>
         <td><%= @resumes[key].last.name %></td>
-        <td><%= @resumes[key].first.created_at %></td>
-        <td><%= @resumes[key].first.job_link %></td>
+        <td><%= @resumes[key].first.created_at.strftime('%m/%d/%Y') %></td>
+        <td><%= link_to "Link to Job", @resumes[key].first.job_link %></td>
         <td><%= @resumes[key].first.job_description %></td>
         
         <td><%= link_to 'Download Resume', @resumes[key].first.file_url, class: "btn btn-info" %></td>

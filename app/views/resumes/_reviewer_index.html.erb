@@ -21,8 +21,8 @@
     <tr>
       <td><%= @resumes[key].first.name %></td><!-- resume.name -->
       <td><%= @resumes[key].first.created_at.strftime('%m/%d/%Y') %></td>
-      <td class="truncate"><%= link_to "Link to Job", @resumes[key].first.job_link %></td>
-      <td class="truncate"><%= @resumes[key].first.job_description %></td>
+      <td><%= link_to "Link to Job", @resumes[key].first.job_link %></td>
+      <td><%= @resumes[key].first.job_description %></td>
       
       <td><%= link_to 'Submitted Resume', @resumes[key].first.file_url, class: "btn btn-info" %></td>
       <% if @resumes[key].count == 2 %>

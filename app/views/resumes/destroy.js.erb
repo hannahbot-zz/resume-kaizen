@@ -1,4 +1,4 @@
-<% if @resume.destroyed? %>
+<% if @resume.archived? %>
   $('#resume-' +<%= @resume.id %>).hide();
 <% else %>
   $('#resume-' +<%= @resume.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");

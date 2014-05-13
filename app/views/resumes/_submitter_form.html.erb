@@ -42,7 +42,7 @@
     <div class="control-group">
     <%= f.label "Enter a price you think is fair (in cents)", class: 'control-label' %>
     <div class="controls">
-      <%= f.number_field :price %>
+      <%= f.text_field :price, data: {autonumeric: {aSign: 'USD '}}%>
     </div>
   </div>
 
@@ -60,7 +60,7 @@
 
       StripeCheckout.open({
         key:         'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
-        amount:      $("#resume_price").val(), 
+        amount:      $("#resume_price").val().replace(/\D/g,''), 
         currency:    'usd',
         name:        'Resume Kaizen',
         description: 'A resume reviewing service',

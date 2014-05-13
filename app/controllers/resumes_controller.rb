@@ -39,8 +39,8 @@ class ResumesController < ApplicationController
   
   def destroy
     @resume = Resume.find(params[:id])
-    if @resume.destroy
-      flash[:notice] = "The resume #{@resume.name} has been deleted."
+    if @resume.update_attribute(:archived, true)
+      flash[:notice] = "The resume #{@resume.name} has been archived."
     else
       flash[:error] = "There was an error. Please try again."
     end
