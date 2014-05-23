@@ -11,14 +11,13 @@
       <th>Download reviewed resume</th>
       <th>Send edited resume link</th>
       <th>Amount Paid</th>
-      <th>Delete link</th>
     </tr>
   </thead>
 
   <tbody>
 
   <% @resumes.keys.each do |key| %>
-    <tr>
+    <tr class="resume">
       <td><%= @resumes[key].first.name %></td><!-- resume.name -->
       <td><%= @resumes[key].first.created_at.strftime('%m/%d/%Y') %></td>
       <td><%= link_to "Link to Job", @resumes[key].first.job_link %></td>
@@ -37,14 +36,11 @@
       <td><%= link_to('Send Edited Resume', new_resume_path(user_id: @resumes[key].first.user_id) , :"data-reveal-id" => "reviewerForm", class: "send-resume-link", :"data-group-id" => @resumes[key].first.group_id, :"data-name" => @resumes[key].first.name, :"data-reviewer-id" => @resumes[key].first.reviewer_id) %></td>
       <% end %> 
 
-      <td><%= @resumes[key].first.price %></td>    
-      <td><%= link_to 'Destroy', @resumes[key].first, class: "btn btn-danger", method: :delete, remote: true %></td>  
+      <td><%= @resumes[key].first.price.to_s(:currency) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
-
 
 <div id="reviewerForm" class="reveal-modal" data-reveal>
  <%= render "reviewer_form"%> 

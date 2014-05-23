@@ -10,8 +10,6 @@ class Resume < ActiveRecord::Base
 
   default_scope order('updated_at ASC')
 
-  # has_many :messages, dependent: :destroy
-  #
-  # after_create :send_resume_emails
-
+	scope :archived, where(:archived => true)
+	scope :sorted, order(:date => :desc)
 end

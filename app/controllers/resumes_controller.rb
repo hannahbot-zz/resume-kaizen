@@ -4,7 +4,6 @@ class ResumesController < ApplicationController
   def index
     @resumes = resumes_array
     @resume = Resume.new
-
   end
 
   def show
@@ -44,16 +43,12 @@ class ResumesController < ApplicationController
     else
       flash[:error] = "There was an error. Please try again."
     end
-
-    respond_with(@resume) do |f|
-      f.html { redirect_to resumes_path }
-    end
   end
 
   private
 
   def resume_params
-    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id, :job_link, :job_description, :price)
+    params.require(:resume).permit(:name, :email, :file, :reviewer_id, :user_id, :group_id, :job_link, :job_description, :price, :search)
   end
 
   def resumes_array
@@ -61,7 +56,6 @@ class ResumesController < ApplicationController
     #One line to collect all of the ids
     resumes = {}
     #A second line to iterate through the ids and create the arrays
-    # binding.pry
     group_id_collection.each do |group_id|
       resumes[group_id] = Resume.where(group_id: group_id)
     end

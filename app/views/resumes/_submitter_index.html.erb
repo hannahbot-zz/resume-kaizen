@@ -10,7 +10,7 @@
       <th>Download submitted resume</th>
       <th>Download reviewed resume</th>
       <th>Amount Paid</th>
-      <th>Delete link</th>
+      <th>Archive?</th>
     </tr>
   </thead>
 
@@ -29,9 +29,6 @@
         <% else %> 
           <td>Not Available Yet!</td>
         <% end %>  
-        
-        <td><%= @resumes[key].first.price %></td>    
-        <td><%= link_to 'Destroy', @resumes[key].first, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>  
       </tr>
   <% end %>
   </tbody>
